@@ -1,0 +1,39 @@
+{
+  "name": "rudanmakuki",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "smui-theme": "smui-theme compile public/smui.css -i src/theme",
+    "prepare": "npm run smui-theme"
+  },
+  "dependencies": {
+    "bilive-danmaku-json": "^0.1.0-rc4"
+  },
+  "devDependencies": {
+    "@smui/button": "^6.0.0-beta.16",
+    "@smui/card": "^6.0.0-beta.16",
+    "@smui/checkbox": "^6.0.0-beta.16",
+    "@smui/chips": "^6.0.0-beta.16",
+    "@smui/dialog": "^6.0.0-beta.16",
+    "@smui/form-field": "^6.0.0-beta.16",
+    "@smui/icon-button": "^6.0.0-beta.16",
+    "@smui/list": "^6.0.0-beta.16",
+    "@smui/tab": "^6.0.0-beta.16",
+    "@smui/tab-bar": "^6.0.0-beta.16",
+    "@smui/textfield": "^6.0.0-beta.16",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
+    "smui-theme": "^6.0.0-beta.16",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.10.16",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  }
+}
