@@ -7,7 +7,7 @@
     export let gift:GiftEvent["data"];
   </script>
   
-  <Card surface$style="background:white;">
+  <Card style="--mdc-theme-surface: #ffffff88">
     <Content>
       <div class="gift">
         <div class="gift-avatar">

@@ -81,7 +81,7 @@
           let chat_merged_flag = false;
           for (const recent of chat_buffer.slice(-10)) {
             if (recent.tag==='Gift') {
-              if (recent.data.user === event.data.user && recent.data.gift === event.data.gift) {
+              if (recent.data.user.uid === event.data.user.uid && recent.data.gift.gift_name === event.data.gift.gift_name) {
                 recent.data.gift.num += event.data.gift.num;
                 recent.data.gift.coin_count += event.data.gift.coin_count;
                 chat_merged_flag = true;
@@ -99,7 +99,7 @@
           let gift_merged_flag = false;
 
           for (const recent of gift_buffer.slice(-10)) {
-            if (recent.user === event.data.user && recent.gift === event.data.gift) {
+            if (recent.user === event.data.user && recent.gift.gift_name === event.data.gift.gift_name) {
               recent.gift.num += event.data.gift.num;
               recent.gift.coin_count += event.data.gift.coin_count;
               gift_merged_flag = true;
@@ -220,7 +220,7 @@
     font-size: 16px;
     display: block;
     resize: vertical;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 </style>
 
