@@ -78,12 +78,37 @@
           }
           break;
         case 'Gift':
-          if(chat_buffer.length<=CHAT_BUFFER_SIZE) {
-            chat_buffer = [...chat_buffer, event];
-          } else {
-            chat_buffer = [...chat_buffer, event].slice(1);
+          let chat_merged_flag = false;
+          for (const recent of chat_buffer.slice(-10)) {
+            if (recent.tag==='Gift') {
+              if (recent.data.user === event.data.user && recent.data.gift === event.data.gift) {
+                recent.data.gift.num += event.data.gift.num;
+                recent.data.gift.coin_count += event.data.gift.coin_count;
+                chat_merged_flag = true;
+                break;
+              }
+            }
           }
-          gift_buffer = [event.data, ...gift_buffer];
+          if (!chat_merged_flag) {            
+            if(chat_buffer.length<=CHAT_BUFFER_SIZE) {
+              chat_buffer = [...chat_buffer, event];
+            } else {
+              chat_buffer = [...chat_buffer, event].slice(1);
+            }
+          }
+          let gift_merged_flag = false;
+
+          for (const recent of gift_buffer.slice(-10)) {
+            if (recent.user === event.data.user && recent.gift === event.data.gift) {
+              recent.gift.num += event.data.gift.num;
+              recent.gift.coin_count += event.data.gift.coin_count;
+              gift_merged_flag = true;
+              break;
+            }
+          }
+          if (!gift_merged_flag) {
+            gift_buffer = [event.data, ...gift_buffer];
+          }
           break;
         case 'SuperChat':
           if(chat_buffer.length<=CHAT_BUFFER_SIZE) {
@@ -130,7 +155,7 @@
 </div>
 <div id="tab-page">
   <div id="tab-bar">
-    <TabBar tabs={TABS} let:tab bind:active = {active_tab}>
+    <TabBar tabs={TABS} let:tab bind:active = {active_tab} >
       <Tab {tab}>
         <Label>
           {#if tab==='chat'}

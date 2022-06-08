@@ -7,7 +7,7 @@
     export let superchat:SuperChatEvent["data"];
   </script>
   
-<Card>
+<Card surface$style="background:white;">
   <Content>
 
     <div class="superchat">

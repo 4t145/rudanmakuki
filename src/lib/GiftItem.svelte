@@ -7,7 +7,7 @@
     export let gift:GiftEvent["data"];
   </script>
   
-  <Card>
+  <Card surface$style="background:white;">
     <Content>
       <div class="gift">
         <div class="gift-avatar">
